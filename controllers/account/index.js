@@ -1,13 +1,11 @@
 const Account = require('../../models').Account
 
-class accountController {
-    static addAdmin(req, res) {
+class accountController{
+    static addAdmin(req, res){
         res.render('register/admin')
     }
 
-    static createAdmin(req, res) {
-        let data = req.body
-        console.log(data)
+    static createAdmin(req, res){
         Account.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -17,13 +15,35 @@ class accountController {
             role: 'Admin',
             password: req.body.password
         })
-            .then(() => {
-                res.redirect('/')
-            })
+        .then(() => {
+            res.redirect('/')
+        })
+        .catch((err)=>{
+            console.log(err.message)
+        })
     }
 
-    static index(req, res) {
-        res.render('register')
+    static addUser(req, res){
+        res.render('addUser')
+    }
+
+    static createUser(req, res){
+        Account.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            address: req.body.address,
+            phone: req.body.phone,
+            username: req.body.phone,
+            role: 'User',
+            balance: 0,
+            password: req.body.password
+        })
+        .then(() => {
+            res.redirect('/')
+        })
+        .catch((err)=>{
+            console.log(err.message)
+        })
     }
 }
 
