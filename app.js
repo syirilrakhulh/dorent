@@ -7,7 +7,7 @@ const moto = require('./routes/motoRoute')
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: true}))
 
-app.use('/account', account)
+app.use('/register', account)
 app.use('/moto', moto)
 
 

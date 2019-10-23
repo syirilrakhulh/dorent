@@ -2,14 +2,35 @@
 module.exports = (sequelize, DataTypes) => {
   class Account extends sequelize.Sequelize.Model{}
   Account.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    address: DataTypes.STRING,
-    phone: DataTypes.STRING,
-    username: DataTypes.STRING,
+    firstName: {
+      type: DataTypes.STRING,
+
+    },
+    lastName: {
+      type: DataTypes.STRING,
+
+    },
+    address: {
+      type: DataTypes.STRING,
+
+    },
+    phone: {
+      type: DataTypes.STRING,
+
+    },
+    username: {
+      type: DataTypes.STRING,
+      unique: {
+        msg: 'Username is available'
+      }
+    },
     role: DataTypes.STRING,
+
     balance: DataTypes.STRING,
-    password: DataTypes.STRING
+
+    password: {
+      type: DataTypes.STRING
+    }
   }, {sequelize, modelName: 'Account'});
 
   Account.associate = function(models) {
