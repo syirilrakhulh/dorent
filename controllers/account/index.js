@@ -15,7 +15,7 @@ class accountController{
             lastName: req.body.lastName,
             address: req.body.address,
             phone: req.body.phone,
-            username: req.body.phone,
+            username: req.body.username,
             role: 'Admin',
             password: req.body.password
         })
@@ -48,6 +48,26 @@ class accountController{
         .catch((err)=>{
             console.log(err.message)
         })
+    }
+
+    static loginPage(req, res){
+        res.render('formlog')
+    }
+
+    static login(req, res){
+        Account.findOne({where:{username: req.body.username, password: req.body.password}})
+            .then((data) => {
+                if(data){
+                    if(data.role == "Admin"){
+                        res.redirect(`/admin/${data.id}`)
+                    } else if(data.role == "User"){
+                        res.redirect(`/user/${data.id}`)
+                    }
+                }
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
 }
 
