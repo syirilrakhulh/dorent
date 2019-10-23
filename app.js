@@ -4,6 +4,7 @@ const port = 3000
 const account = require('./routes/accountsRoute')
 const moto = require('./routes/motoRoute')
 const login = require('./routes/loginRoute')
+const user = require('./routes/userRouter')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 
 app.use('/register', account)
 app.use('/admin', moto)
+app.use('/user', user)
 app.use('/login', login)
 
 
