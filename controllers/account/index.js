@@ -1,11 +1,11 @@
 const Account = require('../../models').Account
 
-class accountController{
-    static addAdmin(req, res){
-        res.render('/register/')
+class accountController {
+    static addAdmin(req, res) {
+        res.render('register/admin')
     }
 
-    static createAdmin(req, res){
+    static createAdmin(req, res) {
         let data = req.body
         console.log(data)
         Account.create({
@@ -17,9 +17,13 @@ class accountController{
             role: 'Admin',
             password: req.body.password
         })
-        .then(() => {
-            res.redirect('/')
-        })
+            .then(() => {
+                res.redirect('/')
+            })
+    }
+
+    static index(req, res) {
+        res.render('register')
     }
 }
 

@@ -5,9 +5,13 @@ const account = require('./routes/accountsRoute')
 const moto = require('./routes/motoRoute')
 
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
-app.use('/account', account)
+app.get('/', (req, res) => {
+    res.render('')
+})
+
+app.use('/register', account)
 app.use('/moto', moto)
 
 
