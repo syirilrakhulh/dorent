@@ -1,6 +1,10 @@
 const Account = require('../../models').Account
 
 class accountController{
+    static index(req, res){
+        res.render('register')
+    }
+
     static addAdmin(req, res){
         res.render('register/admin')
     }
@@ -24,7 +28,7 @@ class accountController{
     }
 
     static addUser(req, res){
-        res.render('addUser')
+        res.render('register/user')
     }
 
     static createUser(req, res){
