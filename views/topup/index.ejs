@@ -81,6 +81,26 @@
             margin: 0;
             padding: 0;
         }
+
+        .button {
+            color: #fe9c0e !important;
+            height: px;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: none;
+            width: 100px;
+            padding: 10px;
+            border: 4px solid #fe9c0e !important;
+            display: inline-block;
+            transition: all 0.4s ease 0s;
+        }
+
+        .button:hover {
+            color: #ffffff !important;
+            background: #fe9c0e;
+            border-color: #fe9c0e !important;
+            transition: all 0.4s ease 0s;
+        }
     </style>
 </head>
 
@@ -88,20 +108,14 @@
     <div class="center">
         <form class="form-style-8" action="" method="POST">
             <h2>
-                Registration Form
+                Top Up
             </h2>
-            <input type="text" name="firstName" placeholder="First Name" />
-            <input type="text" name="lastName" placeholder="Last Name" />
-            <input type="text" name="address" placeholder="Address" />
-            <input type="text" name="phone" placeholder="Phone" />
-            <input type="text" name="username" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
-            <input type="submit" value="submit" />
+            <input type="number" name="topup" placeholder="Nominal" />
+            <input class="button" type="submit" value="submit" />
         </form>
     </div>
 
     <script type="text/javascript">
-        //auto expand textarea
         function adjust_textarea(h) {
             h.style.height = "20px";
             h.style.height = (h.scrollHeight) + "px";
