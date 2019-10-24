@@ -11,7 +11,7 @@ routes.get('/logout', pageController.logout)
 routes.get('/addMoto', motoController.add)
 routes.post('/addMoto', motoController.create)
 
-/** ADD RENT on USER ACCOUNT */
+/** ADD RENT AND TOPUP on USER ACCOUNT */
 routes.get('/', userController.addRent)
 routes.post('/', userController.createRent)
 

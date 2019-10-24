@@ -99,7 +99,7 @@ class accountController {
             .then((data) => {
                 // HELPER LIST
                 let list = listMoto(data)
-                console.log(list)
+                // console.log(list)
                 res.render('profile/user', { list })
 
             })
@@ -109,32 +109,35 @@ class accountController {
     }
 
     static createRent(req, res) {
-        let data = req.body
+        let global = req.body
         let user = req.session.user
 
-        Moto.findOne({ where: { type: data.type } })
-            .then((data) => {
+        // this.topup(nomila, id).then
 
-                return MotoRent.create({
-                    MotoId: data.id,
-                    AccountId: user.id,
-                    start: data.start,
-                    finish: data.finish,
-                    status: 'on rent',
-                    price: data.price
+        if(global.topup){
+            Account.topup(global.topup,user.id)
+            res.redirect('/')
+
+        }else{
+            Moto.findOne({ where: { type: global.type } })
+                .then((data) => {
+    
+                    return MotoRent.create({
+                        MotoId: data.id,
+                        AccountId: user.id,
+                        start: global.start,
+                        finish: global.finish,
+                        status: 'on rent',
+                        price: data.price
+                    })
                 })
-            })
-            .then(() => {
-                res.redirect('/')
-            })
-            .catch((err) => {
-                console.log(err.message)
-            })
-
-        // res.send(data)
-        // console.log('ini useeeeeeeer')
-        // console.log(user)
-
+                .then(() => {
+                    res.redirect('/')
+                })
+                .catch((err) => {
+                    console.log(err.message)
+                })
+        }
     }
 }
 
