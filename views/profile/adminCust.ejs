@@ -355,7 +355,7 @@
 
     <div class="form-style-8">
         <div class="upper">
-            <%= data.firstName%> <%= data.lastName%>
+            NAMA ADMIN
             <a href="/logout"><input type="button" class="logout" style="float: right;padding: 8px;"
                     value="Log Out"></a>
         </div>
@@ -367,46 +367,35 @@
             <div style="height: 190px;width: 630px;float: left;margin-left: 20px;margin-right: 20px;">
 
                 Address:<br>
-                <%= data.address%>
                 <br><br>
                 Phone:<br>
-                <%= data.phone%>
                 <br><br>
                 Register From:<br>
-                <%= data.createdAt.toString()%>
             </div>
             <div style="float: left">
-                <div>
-                    <div style="font-size: 35px">
-                        Balance
-                    </div>
-                    <div style="font-size: 33px;text-align: center;">
-                        Rp. <%= data.balance%>
-                    </div>
-                </div>
-                <br>
                 <button onclick="document.getElementById('id01').style.display='block'" class="button2"
-                    style="margin-bottom: 5px;">Top Up</button>
+                    style="margin-bottom: 5px;">Show Customers</button>
                 <br>
                 <button onclick="document.getElementById('id02').style.display='block'" class="button2"
-                    style="margin-bottom: 5px;">Rent</button>
+                    style="margin-bottom: 5px;">Show Motors</button>
                 <!-- <input type="button" class="button2" value="Rent"> -->
 
             </div>
         </div>
         <br>
         <div style="font-size: 25px;">
-            RENTAL HISTORY
+            LIST CUSTOMERS
         </div>
         <div>
             <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
                     <thead>
                         <tr>
-                            <th>Invoice</th>
-                            <th>Start Date</th>
-                            <th>Finish Date</th>
-                            <th>Price</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Balance</th>
                         </tr>
                     </thead>
                 </table>
@@ -445,10 +434,9 @@
                 <h1 style="color: #fe9c0e;">
                     Rent Bike
                 </h1>
-                <input type="text" name="typeMoto" placeholder="Type Motor">
-                <input type="text" style="width: 49.8%;" class="inputDate" id="datepickerStart"
-                    placeholder="Start Date">
-                <input type="text" style="width: 49.8%;" id="datepickerFinish" placeholder="Finish Date">
+                <input type="text" name="typeMoto" placeholder="Type Motor" />
+                <input placeholder="Start" type="date" name="start" />
+                <input placeholder="Finish" type="date" name="finish">
                 <div>
                     <button class="button" type="submit">Rent</button>
                     <button type="button" onclick="document.getElementById('id02').style.display='none'"
