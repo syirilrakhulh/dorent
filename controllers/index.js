@@ -11,12 +11,13 @@ class showPage {
                 console.log(req.body)
 
                 Account.findByPk(req.session.user.id)
-                .then((data) => {
-                    res.render('profile/admin', { data: req.session.user })
-                })
-                .catch((err) => {
-                    res.send(err.message)
-                })
+                    .then((data) => {
+                        console.log(req.session.user)
+                        res.render('profile/admin', { data: req.session.user })
+                    })
+                    .catch((err) => {
+                        res.send(err.message)
+                    })
 
                 /** USER ACCOUNt */
             } else if (req.session.user.role == "User") {

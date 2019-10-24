@@ -142,11 +142,9 @@ class accountController {
                 .catch((err) => {
                     console.log(err)
                 })
-            
-            
 
+        }
     }
-}
 }
 
 module.exports = accountController
