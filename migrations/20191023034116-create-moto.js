@@ -8,19 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      platNumber: {
+      type: {
         type: Sequelize.STRING
       },
       category: {
-        type: Sequelize.STRING
-      },
-      type: {
         type: Sequelize.STRING
       },
       price: {
         type: Sequelize.INTEGER
       },
       status: {
+        type: Sequelize.STRING
+      },
+      quota: {
         type: Sequelize.STRING
       },
       createdAt: {
