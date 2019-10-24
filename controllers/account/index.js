@@ -1,4 +1,5 @@
 const Account = require('../../models').Account
+const bcrypt = require('../../helpers/hashPassword')
 
 class accountController {
     static index(req, res) {
@@ -23,7 +24,7 @@ class accountController {
                 res.redirect('/')
             })
             .catch((err) => {
-                console.log(err.message)
+                res.send(err.message)
             })
     }
 
@@ -46,7 +47,7 @@ class accountController {
                 res.redirect('/')
             })
             .catch((err) => {
-                console.log(err.message)
+                res.send(err.message)
             })
     }
 
@@ -55,18 +56,25 @@ class accountController {
     }
 
     static login(req, res) {
-        Account.findOne({ where: { username: req.body.username, password: req.body.password } })
-            .then((data) => {
-                if (data) {
-                    if (data.role == "Admin") {
-                        res.redirect(`/admin/${data.id}`)
-                    } else if (data.role == "User") {
-                        res.redirect(`/user/${data.id}`)
+        Account.findOne({ where: { username: req.body.username} })
+            .then( data => {
+                if (bcrypt.compare(req.body.password, data.password)) {
+                    req.session.user = {
+                        id : data.id,
+                        firstName : data.firstName,
+                        lastName : data.lastName,
+                        address : data.address,
+                        createdAt : data.createdAt,
+                        balance : data.balance,
+                        role : data.role,
                     }
+                    res.redirect('/')
+                } else {
+                    res.send('wrong password')
                 }
             })
             .catch((err) => {
-                console.log(err.message)
+                res.send(err.message)
             })
     }
 
