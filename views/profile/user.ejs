@@ -8,6 +8,18 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepickerStart").datepicker();
+        });
+        $(function () {
+            $("#datepickerFinish").datepicker();
+        });
+    </script>
     <style>
         * {
             font-family: 'Open Sans', sans-serif;
@@ -445,10 +457,15 @@
                 <h1 style="color: #fe9c0e;">
                     Rent Bike
                 </h1>
-                <input type="text" name="typeMoto" placeholder="Type Motor">
-                <input type="text" style="width: 49.8%;" class="inputDate" id="datepickerStart"
+                <select name="type">
+                    <% for(let i = 0; i < list.length; i++) {%>
+                    <option value="<%=list[i]%>"><%=list[i]%>
+                    </option>
+                    <% }%>
+                </select>
+                <input type="text" name="start" style="width: 49.8%;" class="inputDate" id="datepickerStart"
                     placeholder="Start Date">
-                <input type="text" style="width: 49.8%;" id="datepickerFinish" placeholder="Finish Date">
+                <input type="text" name="finish" style="width: 49.8%;" id="datepickerFinish" placeholder="Finish Date">
                 <div>
                     <button class="button" type="submit">Rent</button>
                     <button type="button" onclick="document.getElementById('id02').style.display='none'"

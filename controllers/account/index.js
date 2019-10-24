@@ -94,41 +94,42 @@ class accountController {
             })
     }
 
-    static addRent(req, res){
-        Moto.findAll({where: {status: "available"}})
-        .then((data) => {
-            // HELPER LIST
-            let list = listMoto(data)
-            res.render('add', {list})
-            
-        })
-        .catch((err) => {
-            console.log(err.message)
-        })
+    static addRent(req, res) {
+        Moto.findAll({ where: { status: "available" } })
+            .then((data) => {
+                // HELPER LIST
+                let list = listMoto(data)
+                console.log(list)
+                res.render('profile/user', { list })
+
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
 
-    static createRent(req, res){
+    static createRent(req, res) {
         let data = req.body
         let user = req.session.user
 
-        Moto.findOne({where: {type: data.type}})
-        .then((data) => {
+        Moto.findOne({ where: { type: data.type } })
+            .then((data) => {
 
-            return MotoRent.create({
-                MotoId : data.id,
-                AccountId : user.id,
-                start : data.start,
-                finish : data.finish,
-                status : 'on rent',
-                price : data.price
+                return MotoRent.create({
+                    MotoId: data.id,
+                    AccountId: user.id,
+                    start: data.start,
+                    finish: data.finish,
+                    status: 'on rent',
+                    price: data.price
+                })
             })
-        })
-        .then(()=>{
-            res.redirect('/')
-        })
-        .catch((err) => {
-            console.log(err.message)
-        })
+            .then(() => {
+                res.redirect('/')
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
 
         // res.send(data)
         // console.log('ini useeeeeeeer')
