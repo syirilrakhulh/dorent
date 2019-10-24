@@ -99,12 +99,11 @@ class accountController {
             .then((data) => {
                 // HELPER LIST
                 let list = listMoto(data)
-                // console.log(list)
                 res.render('profile/user', { list })
 
             })
             .catch((err) => {
-                console.log(err.message)
+                res.send(err.message)
             })
     }
 
