@@ -12,7 +12,7 @@ routes.get('/addMoto', motoController.add)
 routes.post('/addMoto', motoController.create)
 
 /** ADD RENT on USER ACCOUNT */
-routes.get('/rent', userController.addRent)
-routes.post('/rent', userController.createRent)
+routes.get('/', userController.addRent)
+routes.post('/', userController.createRent)
 
 module.exports = routes
