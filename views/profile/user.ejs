@@ -230,8 +230,9 @@
 
     <div class="form-style-8">
         <div class="upper">
-            Disini nama yang login
-            <input type="button" class="logout" style="float: right;padding: 8px;" value="Log Out">
+            <%= data.firstName%> <%= data.lastName%>
+            <a href="/logout"><input type="button" class="logout" style="float: right;padding: 8px;"
+                    value="Log Out"></a>
         </div>
         <div style="height: 190px;">
             <div style="float: left;width:200px;height: 160px">
@@ -241,13 +242,13 @@
             <div style="height: 190px;width: 630px;float: left;margin-left: 20px;margin-right: 20px;">
 
                 Address:<br>
-                Jalan Praja Dalam C, Kebayoran Lama Selatan, Kota Jakarta Selatan, Daerah Khusus Ibukota
-                Jakarta
+                <%= data.address%>
                 <br><br>
                 Phone:<br>
-                0852717752727
+                <%= data.phone%>
                 <br><br>
                 Register From:<br>
+                <%= data.createdAt.toString()%>
                 27-10-2019
 
             </div>
@@ -257,7 +258,7 @@
                         Balance
                     </div>
                     <div style="font-size: 33px;text-align: center;">
-                        Rp. 10.000.000
+                        Rp. <%= data.balance%>
                     </div>
                 </div>
                 <br>
