@@ -109,6 +109,7 @@ class accountController {
     }
 
     static createRent(req, res) {
+
         let global = req.body
         let user = req.session.user
 
@@ -138,6 +139,7 @@ class accountController {
                     console.log(err.message)
                 })
         }
+
     }
 }
 
