@@ -109,27 +109,30 @@ class accountController {
     }
 
     static createRent(req, res) {
-        let data = req.body
         let user = req.session.user
-
-        Moto.findOne({ where: { type: data.type } })
-            .then((data) => {
-
-                return MotoRent.create({
-                    MotoId: data.id,
-                    AccountId: user.id,
-                    start: data.start,
-                    finish: data.finish,
-                    status: 'on rent',
-                    price: data.price
+        if (req.body.topup) {
+            console.log('ini pencet top up')
+        }
+        else {
+            let global = req.body
+            Moto.findOne({ where: { type: global.type } })
+                .then((data) => {
+                    return MotoRent.create({
+                        MotoId: data.id,
+                        AccountId: user.id,
+                        start: global.start,
+                        finish: global.finish,
+                        status: 'on rent',
+                        price: data.price
+                    })
                 })
-            })
-            .then(() => {
-                res.redirect('/')
-            })
-            .catch((err) => {
-                console.log(err.message)
-            })
+                .then(() => {
+                    res.redirect('/')
+                })
+                .catch((err) => {
+                    console.log(err.message)
+                })
+        }
 
         // res.send(data)
         // console.log('ini useeeeeeeer')
