@@ -1,7 +1,11 @@
 'use strict';
 const bcrypt = require('../helpers/hashPassword')
 module.exports = (sequelize, DataTypes) => {
-  class Account extends sequelize.Sequelize.Model{}
+  class Account extends sequelize.Sequelize.Model {
+    topup(nominal) {
+      this.balance += nominal
+    }
+  }
   Account.init({
     firstName: {
       type: DataTypes.STRING,
@@ -56,6 +60,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
+
   }, { 
     hooks: {
       beforeCreate: function(user, options){
@@ -63,9 +68,9 @@ module.exports = (sequelize, DataTypes) => {
       }
   }, sequelize, modelName: 'Account'});
 
-  Account.associate = function(models) {
+  Account.associate = function (models) {
     // Account.hasMany(models.MotoRent)
-    Account.belongsToMany(models.Moto, {through: models.MotoRent})
+    Account.belongsToMany(models.Moto, { through: models.MotoRent })
   };
   return Account;
 };

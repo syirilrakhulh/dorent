@@ -77,6 +77,18 @@ class accountController {
                 res.send(err.message)
             })
     }
+
+    static topupPage(req, res) {
+        res.render('topup')
+    }
+
+    static topup(req, res) {
+        Account.findByPk(req.params.id)
+            .then(data => {
+                data.topup(req.body.topup)
+                res.send(data)
+            })
+    }
 }
 
 module.exports = accountController
