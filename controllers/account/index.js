@@ -111,17 +111,15 @@ class accountController {
 
         let global = req.body
         let user = req.session.user
-
         // this.topup(nomila, id).then
 
-        if(global.topup){
-            Account.topup(global.topup,user.id)
+        if (global.topup) {
+            Account.topup(global.topup, user.id)
             res.redirect('/')
 
-        }else{
+        } else if (user.role == 'user' || user.role == 'User') {
             Moto.findOne({ where: { type: global.type } })
                 .then((data) => {
-    
                     return MotoRent.create({
                         MotoId: data.id,
                         AccountId: user.id,
@@ -136,6 +134,22 @@ class accountController {
                 })
                 .catch((err) => {
                     console.log(err.message)
+                })
+        }
+        else if (user.role == 'admin' || user.role == 'Admin') {
+            let currentStatus = 'available'
+            if (global.quota <= 0) {
+                currentStatus = 'not available'
+            }
+            Moto.create({
+                type: global.type,
+                category: global.type,
+                price: global.price,
+                quota: global.quota,
+                status: currentStatus
+            })
+                .then(() => {
+                    res.redirect('/')
                 })
         }
 

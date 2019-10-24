@@ -378,7 +378,7 @@
 
     <div class="form-style-8">
         <div class="upper">
-            NAMA ADMIN
+            <%= data.firstName%> <%= data.lastName%>
             <a href="/logout"><input type="button" class="logout" style="float: right;padding: 8px;"
                     value="Log Out"></a>
         </div>
@@ -390,10 +390,13 @@
             <div style="height: 190px;width: 630px;float: left;margin-left: 20px;margin-right: 20px;">
 
                 Address:<br>
+                <%= data.address %>
                 <br><br>
                 Phone:<br>
+                <%= data.phone %>
                 <br><br>
                 Register From:<br>
+                <%= data.createdAt %>
 
             </div>
             <div style="float: left">
