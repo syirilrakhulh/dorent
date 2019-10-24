@@ -99,7 +99,7 @@ class accountController {
             .then((data) => {
                 // HELPER LIST
                 let list = listMoto(data)
-                console.log(list)
+                // console.log(list)
                 res.render('profile/user', { list })
 
             })
@@ -109,14 +109,20 @@ class accountController {
     }
 
     static createRent(req, res) {
+
+        let global = req.body
         let user = req.session.user
-        if (req.body.topup) {
-            console.log('ini pencet top up')
-        }
-        else {
-            let global = req.body
+
+        // this.topup(nomila, id).then
+
+        if(global.topup){
+            Account.topup(global.topup,user.id)
+            res.redirect('/')
+
+        }else{
             Moto.findOne({ where: { type: global.type } })
                 .then((data) => {
+    
                     return MotoRent.create({
                         MotoId: data.id,
                         AccountId: user.id,
@@ -133,10 +139,6 @@ class accountController {
                     console.log(err.message)
                 })
         }
-
-        // res.send(data)
-        // console.log('ini useeeeeeeer')
-        // console.log(user)
 
     }
 }
