@@ -1,5 +1,8 @@
 const Account = require('../../models').Account
+const Moto = require('../../models').Moto
+const MotoRent = require('../../models').MotoRent
 const bcrypt = require('../../helpers/hashPassword')
+const listMoto = require('../../helpers/typeMoto')
 
 class accountController {
     static index(req, res) {
@@ -89,6 +92,48 @@ class accountController {
                 data.topup(req.body.topup)
                 res.send(data)
             })
+    }
+
+    static addRent(req, res){
+        Moto.findAll({where: {status: "available"}})
+        .then((data) => {
+            // HELPER LIST
+            let list = listMoto(data)
+            res.render('add', {list})
+            
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+    }
+
+    static createRent(req, res){
+        let data = req.body
+        let user = req.session.user
+
+        Moto.findOne({where: {type: data.type}})
+        .then((data) => {
+
+            return MotoRent.create({
+                MotoId : data.id,
+                AccountId : user.id,
+                start : data.start,
+                finish : data.finish,
+                status : 'on rent',
+                price : data.price
+            })
+        })
+        .then(()=>{
+            res.redirect('/')
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
+
+        // res.send(data)
+        // console.log('ini useeeeeeeer')
+        // console.log(user)
+
     }
 }
 

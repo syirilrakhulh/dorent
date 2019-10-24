@@ -2,11 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   class Moto extends sequelize.Sequelize.Model{}
   Moto.init({
-    platNumber: DataTypes.STRING,
-    category: DataTypes.STRING,
     type: DataTypes.STRING,
+    category: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+    quota: DataTypes.STRING
   }, {sequelize, modelName: 'Moto'});
 
   Moto.associate = function(models) {

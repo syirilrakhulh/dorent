@@ -1,8 +1,6 @@
 
 class showPage {
     static showPage(req, res){
-        console.log("aasasasas")
-        console.log(req.session.user)
         if(req.session.user){
             if(req.session.user.role == "Admin"){
                 res.render('profile/admin', {data: req.session.user})
