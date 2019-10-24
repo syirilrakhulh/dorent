@@ -82,18 +82,6 @@ class accountController {
             })
     }
 
-    static topupPage(req, res) {
-        res.render('topup')
-    }
-
-    static topup(req, res) {
-        Account.findByPk(req.params.id)
-            .then(data => {
-                data.topup(req.body.topup)
-                res.send(data)
-            })
-    }
-
     static addRent(req, res) {
         Moto.findAll({ where: { status: "available" } })
             .then((data) => {
@@ -111,17 +99,15 @@ class accountController {
 
         let global = req.body
         let user = req.session.user
-
         // this.topup(nomila, id).then
 
-        if(global.topup){
-            Account.topup(global.topup,user.id)
+        if (global.topup) {
+            Account.topup(global.topup, user.id)
             res.redirect('/')
 
-        }else{
+        } else if (user.role == 'user' || user.role == 'User') {
             Moto.findOne({ where: { type: global.type } })
                 .then((data) => {
-    
                     return MotoRent.create({
                         MotoId: data.id,
                         AccountId: user.id,
@@ -138,8 +124,29 @@ class accountController {
                     console.log(err.message)
                 })
         }
+        else if (user.role == 'admin' || user.role == 'Admin') {
+            let currentStatus = 'available'
+            if (global.quota <= 0) {
+                currentStatus = 'not available'
+            }
+            Moto.create({
+                type: global.type,
+                category: global.category,
+                price: Number(global.price),
+                quota: Number(global.quota),
+                status: currentStatus
+            })
+                .then(() => {
+                    res.redirect('/')
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            
+            
 
     }
+}
 }
 
 module.exports = accountController

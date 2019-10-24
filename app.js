@@ -4,7 +4,6 @@ const app = express()
 const port = 4000
 const session = require('express-session')
 const accountRoute = require('./routes/accountsRoute')
-const motoRoute = require('./routes/motoRoute')
 const loginRoute = require('./routes/loginRoute')
 const pageRoute = require('./routes/pageRoute')
 
@@ -22,7 +21,6 @@ app.use(session({
 
 app.use('/', pageRoute)
 app.use('/register', accountRoute)
-app.use('/admin', motoRoute)
 app.use('/login', loginRoute)
 
 app.listen(port, () => console.log(`listening on port ${port}`))
