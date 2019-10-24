@@ -6,9 +6,15 @@ class showPage {
     static showPage(req, res) {
         if (req.session.user) {
             if (req.session.user.role == "Admin") {
-                res.render('profile/admin', { data: req.session.user })
+                Account.findByPk(req.session.user.id)
+                .then((data) => {
+                    res.render('profile/admin', { data: req.session.user })
+                })
+                .catch((err) => {
+                    res.send(err.message)
+                })
+
             } else if (req.session.user.role == "User") {
-                // console.log(req.session.user.id)
                 let list
                 Moto.findAll({ where: { status: "available" } })
                     .then((data) => {
@@ -18,11 +24,9 @@ class showPage {
                         return Account.findByPk(req.session.user.id)
                     })
                     .then((data) => {
-                        // console.log(data)
-                        // console.log(req.body.topUp)
                     })
                     .catch((err) => {
-                        console.log(err.message)
+                        res.send(err.message)
                     })
             }
         } else {

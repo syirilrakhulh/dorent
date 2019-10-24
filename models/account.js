@@ -3,7 +3,6 @@ const bcrypt = require('../helpers/hashPassword')
 module.exports = (sequelize, DataTypes) => {
   class Account extends sequelize.Sequelize.Model {
     static topup(nominal, id) {
-      // console.log(nominal, id)
 
       return Account.findByPk(id)
       .then((data) => {
@@ -12,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       })
       .then()
       .catch(err=>{
-        console.log(err.message)
+        res.send(err.message)
       })
     }
   }
