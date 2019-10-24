@@ -2,10 +2,21 @@
 const bcrypt = require('../helpers/hashPassword')
 module.exports = (sequelize, DataTypes) => {
   class Account extends sequelize.Sequelize.Model {
-    topup(nominal) {
-      this.balance += nominal
+    static topup(nominal, id) {
+      // console.log(nominal, id)
+
+      return Account.findByPk(id)
+      .then((data) => {
+        let hitung = Number(data.balance) + Number(nominal)
+        return Account.update({balance:hitung}, {where: {id: id}})
+      })
+      .then()
+      .catch(err=>{
+        console.log(err.message)
+      })
     }
   }
+
   Account.init({
     firstName: {
       type: DataTypes.STRING,
