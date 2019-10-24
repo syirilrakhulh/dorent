@@ -56,17 +56,18 @@ class accountController {
     }
 
     static login(req, res) {
-        Account.findOne({ where: { username: req.body.username} })
-            .then( data => {
+        Account.findOne({ where: { username: req.body.username } })
+            .then(data => {
                 if (bcrypt.compare(req.body.password, data.password)) {
                     req.session.user = {
-                        id : data.id,
-                        firstName : data.firstName,
-                        lastName : data.lastName,
-                        address : data.address,
-                        createdAt : data.createdAt,
-                        balance : data.balance,
-                        role : data.role,
+                        id: data.id,
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        address: data.address,
+                        createdAt: data.createdAt,
+                        balance: data.balance,
+                        role: data.role,
+                        phone: data.phone
                     }
                     res.redirect('/')
                 } else {

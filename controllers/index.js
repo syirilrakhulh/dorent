@@ -5,9 +5,9 @@ class showPage {
         console.log(req.session.user)
         if(req.session.user){
             if(req.session.user.role == "Admin"){
-                res.render('/profile/admin', {data: req.session.user})
+                res.render('profile/admin', {data: req.session.user})
             } else if(req.session.user.role == "User"){
-                res.render('/profile/user', {data: req.session.user})
+                res.render('profile/user', {data: req.session.user})
             }
         } else {
             res.render('')
