@@ -96,13 +96,12 @@ class accountController {
     }
 
     static createRent(req, res) {
-
         let global = req.body
         let user = req.session.user
-        // this.topup(nomila, id).then
 
         if (global.topup) {
             Account.topup(global.topup, user.id)
+            // res.render('profile/user')
             res.redirect('/')
 
         } else if (user.role == 'user' || user.role == 'User') {
@@ -142,9 +141,10 @@ class accountController {
                 .catch((err) => {
                     console.log(err)
                 })
-
-        }
+            
+            Moto.findAll()
     }
+}
 }
 
 module.exports = accountController
