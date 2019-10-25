@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepickerStart").datepicker();
+        });
+        $(function () {
+            $("#datepickerFinish").datepicker();
+        });
+    </script>
+    <!-- ========================================================== -->
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .form-style-8 {
+            font-family: 'Open Sans Condensed', arial, sans;
+            width: 1100px;
+            padding: 30px;
+            background: #FFFFFF;
+            margin: 50px auto;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+            -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+            -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+
+        }
+
+        .form-style-8 .upper {
+            background: #fe9c0e;
+            text-transform: uppercase;
+            font-family: 'Open Sans Condensed', sans-serif;
+            color: #ffffff;
+            font-size: 30px;
+            font-weight: 100;
+            padding: 5px;
+            margin: -50px -30px 30px -30px;
+        }
+
+        .form-style-8 input[type="text"],
+        .form-style-8 input[type="date"],
+        .form-style-8 input[type="datetime"],
+        .form-style-8 input[type="email"],
+        .form-style-8 input[type="number"],
+        .form-style-8 input[type="search"],
+        .form-style-8 input[type="time"],
+        .form-style-8 input[type="url"],
+        .form-style-8 input[type="password"],
+        .form-style-8 textarea,
+        .form-style-8 select,
+        .box-profile {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            display: block;
+            width: 100%;
+            padding: 7px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            background: transparent;
+            margin-bottom: 10px;
+            font: 16px Arial, Helvetica, sans-serif;
+            height: 45px;
+        }
+
+        .form-style-8 textarea {
+            resize: none;
+            overflow: hidden;
+        }
+
+        .center {
+            text-align: center;
+            margin: 0;
+            position: absolute;
+            left: 50%;
+            -ms-transform: translate(-50%);
+            transform: translate(-50%);
+        }
+
+        .bg-body {
+            background-image: url(https://hdqwalls.com/wallpapers/orange-minimalism.jpg);
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        .button {
+            color: #fe9c0e !important;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: none;
+            width: 100px;
+            padding: 10px;
+            border: 4px solid #fe9c0e !important;
+            display: inline-block;
+            transition: all 0.4s ease 0s;
+        }
+
+        .button:hover {
+            color: #ffffff !important;
+            background: #fe9c0e;
+            border-color: #fe9c0e !important;
+            transition: all 0.4s ease 0s;
+        }
+
+        .button2 {
+            color: #fe9c0e !important;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: none;
+            width: 230px;
+            padding: 10px;
+            border: 4px solid #fe9c0e !important;
+            display: inline-block;
+            transition: all 0.4s ease 0s;
+        }
+
+        .button2:hover {
+            color: #ffffff !important;
+            background: #fe9c0e;
+            border-color: #fe9c0e !important;
+            transition: all 0.4s ease 0s;
+        }
+
+
+        .logout {
+            color: #FFFFFF !important;
+            height: px;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: none;
+            width: 100px;
+            padding: 10px;
+            border: 4px solid #ffffff !important;
+            display: inline-block;
+            transition: all 0.4s ease 0s;
+        }
+
+        .logout:hover {
+            color: #fe9c0e !important;
+            background: #ffffff;
+            border-color: #ffffff !important;
+            transition: all 0.4s ease 0s;
+        }
+
+        /* ================================= */
+
+        h1 {
+            font-size: 30px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .tbl-header {
+            background-color: rgba(254, 156, 14, 0.6);
+            /* height: 30px; */
+        }
+
+        .tbl-content {
+            height: 85px;
+            overflow-x: auto;
+            margin-top: 0px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            padding: 10px 15px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 12px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px;
+            text-align: left;
+            vertical-align: middle;
+            font-weight: 300;
+            font-size: 12px;
+            color: #fff;
+            border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+        }
+
+
+        /* demo styles */
+
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+        body {
+            background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+            background: linear-gradient(to right, #25c481, #25b7c4);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        section {
+            margin: 50px;
+        }
+
+        /* for custom scrollbar for webkit browser*/
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ================================= */
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=number],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type=date] {
+            width: 49%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #FFFFFF;
+            margin: 5% auto 15% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        /* ================================= */
+
+        .input-date {
+
+            width: 49%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body class="bg-body">
+
+    <div class="form-style-8">
+        <div class="upper">
+                <%= data.firstName%> <%= data.lastName%>
+            <a href="/logout"><input type="button" class="logout" style="float: right;padding: 8px;"
+                    value="Log Out"></a>
+        </div>
+        <div style="height: 190px;">
+            <div style="float: left;width:200px;height: 160px">
+                <img src="http://assets.stickpng.com/thumbs/585e4bf3cb11b227491c339a.png"
+                    style="width: 190px;height: 190px;">
+            </div>
+            <div style="height: 190px;width: 630px;float: left;margin-left: 20px;margin-right: 20px;">
+
+                Address:<br>
+                <%= data.address%>
+                <br><br>
+                Phone:<br>
+                <%= data.phone%>
+                <br><br>
+                Register From:<br>
+                <%= data.createdAt.toString()%>
+            </div>
+            <div style="float: left">
+                <button class="button2" style="margin-bottom: 5px;">Show Customers</button>
+                <br>
+                <button class="button2" style="margin-bottom: 5px;">Show Motors</button><br>
+                <button onclick="document.getElementById('id01').style.display='block'" class="button2"
+                    style="margin-bottom: 5px;">Add Motor</button><br>
+                <!-- <input type="button" class="button2" value="Rent"> -->
+
+            </div>
+        </div>
+        <br>
+        <div style="font-size: 25px;">
+            LIST MOTORS
+        </div>
+        <div>
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Quota</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbl-content" style="background-color: rgba(254, 156, 14, 0.2);">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                        <% for(let i = 0; i < moto.length; i++) { %>
+                            <tr>
+                                <th> <%=moto[i].type%> </th>
+                                <th> <%=moto[i].category%> </th>
+                                <th> <%=moto[i].price%> </th>
+                                <th> <%=moto[i].quota%> </th>
+                                <th> <%=moto[i].status%> </th>
+                                <th>
+                                        <a href=""> Update </a> 
+                                        <a href=""> Delete </a> 
+        
+                                    </th>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- ======================================= -->
+    <div id="id01" class="modal">
+        <form class="modal-content animate" action="" method="POST">
+            <div class="container">
+                <h1 style="color: #fe9c0e;">
+                    Add New Motor
+                </h1>
+                <input type="text" name="type" placeholder="Type" />
+                <input type="text" name="category" placeholder="Category" />
+                <input type="number" name="price" placeholder="Price" />
+                <input type="number" name="quota" placeholder="Quota" />
+                <div>
+                    <button class="button" type="submit">Add</button>
+                    <!-- <button class="button" type="button">Cancel</button> -->
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                        class="button">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <!-- ====================================================== -->
+
+    <script type="text/javascript">
+        //auto expand textarea
+        function adjust_textarea(h) {
+            h.style.height = "20px";
+            h.style.height = (h.scrollHeight) + "px";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        .form-style-8 {
+            font-family: 'Open Sans Condensed', arial, sans;
+            width: 500px;
+            padding: 30px;
+            background: #FFFFFF;
+            margin: 50px auto;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+            -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+            -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+
+        }
+
+        .form-style-8 h1 {
+            background: #fe9c0e;
+            text-transform: uppercase;
+            font-family: 'Open Sans Condensed', sans-serif;
+            color: #ffffff;
+            font-size: 30px;
+            font-weight: 100;
+            padding: 10px;
+            margin: -30px -30px 30px -30px;
+        }
+
+        .form-style-8 input[type="text"],
+        .form-style-8 input[type="date"],
+        .form-style-8 input[type="datetime"],
+        .form-style-8 input[type="email"],
+        .form-style-8 input[type="number"],
+        .form-style-8 input[type="search"],
+        .form-style-8 input[type="time"],
+        .form-style-8 input[type="url"],
+        .form-style-8 input[type="password"],
+        .form-style-8 textarea,
+        .form-style-8 select {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            display: block;
+            width: 100%;
+            padding: 7px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            background: transparent;
+            margin-bottom: 10px;
+            font: 16px Arial, Helvetica, sans-serif;
+            height: 45px;
+        }
+
+        .form-style-8 textarea {
+            resize: none;
+            overflow: hidden;
+        }
+
+        .center {
+            text-align: center;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .bg-body {
+            background-image: url(https://hdqwalls.com/wallpapers/orange-minimalism.jpg);
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        .button {
+            color: #fe9c0e !important;
+            height: px;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: none;
+            width: 100px;
+            padding: 10px;
+            border: 4px solid #fe9c0e !important;
+            display: inline-block;
+            transition: all 0.4s ease 0s;
+        }
+
+        .button:hover {
+            color: #ffffff !important;
+            background: #fe9c0e;
+            border-color: #fe9c0e !important;
+            transition: all 0.4s ease 0s;
+        }
+    </style>
+</head>
+
+<body class="bg-body">
+    <div class="center">
+        <form class="form-style-8" action="" method="POST">
+            <h1>
+                Login
+            </h1>
+            <input type="text" name="username" placeholder="Username" />
+            <input type="password" name="password" placeholder="Password" />
+            <a href="/"><input class="button" type="button" value="Back" /></a>
+            <input class="button" type="submit" value="Submit" />
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        //auto expand textarea
+        function adjust_textarea(h) {
+            h.style.height = "20px";
+            h.style.height = (h.scrollHeight) + "px";
+        }
+    </script>
+</body>
+
+</html>
